@@ -379,10 +379,12 @@ public class GridPresentation extends Canvas implements java.util.Observer
                             selectedCellCoordinates.column + 1);
                     }
                     break;
-                case END:
-                    Solver solver = new Solver (g);
-                    solver.solve ();
-                    redraw ();
+                case BACK_SPACE:
+                    if (selectedCellCoordinates != null)
+                    {
+                        g.setCell (selectedCellCoordinates, Cell.NO_VALUE);
+                        drawCell (selectedCellCoordinates);
+                    }
                     break;
                 default:
                     break;
